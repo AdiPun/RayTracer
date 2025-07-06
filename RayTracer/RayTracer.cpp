@@ -5,8 +5,49 @@
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	// Image
+
+	constexpr int kImageWidth = 256;
+	constexpr int kImageHeight = 256;
+
+	constexpr float kFloatByte = 255.999f;
+
+
+	// Pixel
+	struct Pixel
+	{
+		float r{ 0.0f };
+		float g{ 0.0f };
+		float b{ 0.0f };
+		float a{ 1.0f };
+	};
+
+	// Render
+
+	std::cout << "P3\n" << kImageWidth << " " << kImageHeight << "\n255\n";
+
+	for (int j = 0; j < kImageHeight; j++)
+	{
+		// Progress indicator every scanline
+		std::clog << "\rScanlines remaining: " << kImageHeight - j << " " << std::flush;
+		for (int i = 0; i < kImageWidth; i++)
+		{
+			float r = static_cast<float>(i) / (kImageWidth - 1);
+			float g = static_cast<float>(j) / (kImageHeight - 1);
+			float b = 0.0f;
+
+			int iR = static_cast<int>(kFloatByte * r);
+			int iG = static_cast<int>(kFloatByte * g);
+			int iB = static_cast<int>(kFloatByte * b);
+
+			std::cout << iR << " " << iG << " " << iB << "\n";
+		}
+	}
+
+	std::clog << "\rDone.                           \n";
 }
+
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
