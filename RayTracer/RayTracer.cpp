@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include "vector.h"
 
 int main()
 {
@@ -12,6 +13,7 @@ int main()
 
 	constexpr float kFloatByte = 255.999f;
 
+	Vec256f3 woah;
 
 	// Pixel
 	struct Pixel

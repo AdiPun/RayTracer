@@ -9,7 +9,8 @@
 #include <immintrin.h>   // AVX intrinsics
 #include <cstddef>
 #include <cassert>
-#include <cmath>         // only for scalar fallbacks if you add any
+
+// Data-oriented Vec2/Vec3/Vec4 structs with AVX batching and SIMD support
 
 /*  Helpers  */
 namespace avx
@@ -119,8 +120,13 @@ struct Vec256f3
         // One NewtonRaphson for accuracy
         inv = _mm256_mul_ps(inv,
             _mm256_sub_ps(_mm256_set1_ps(1.5f),
-                _mm256_mul_ps(_mm256_mul_ps(len2, inv),   // len2*inv
-                    _mm256_mul_ps(inv, _mm256_set1_ps(0.5f)));
+                _mm256_mul_ps(
+                    _mm256_mul_ps(len2, inv),  // len2 * inv
+                    _mm256_mul_ps(inv, _mm256_set1_ps(0.5f))
+                )
+            )
+        );
+
         x = _mm256_mul_ps(x, inv);
         y = _mm256_mul_ps(y, inv);
         z = _mm256_mul_ps(z, inv);
