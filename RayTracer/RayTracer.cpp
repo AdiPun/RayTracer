@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "vector.h"
+#include "colour.h"
 
 int main()
 {
@@ -15,14 +16,6 @@ int main()
 
 	Vec256f3 woah;
 
-	// Pixel
-	struct Pixel
-	{
-		float r{ 0.0f };
-		float g{ 0.0f };
-		float b{ 0.0f };
-		float a{ 1.0f };
-	};
 
 	// Render
 
@@ -34,15 +27,13 @@ int main()
 		std::clog << "\rScanlines remaining: " << kImageHeight - j << " " << std::flush;
 		for (int i = 0; i < kImageWidth; i++)
 		{
-			float r = static_cast<float>(i) / (kImageWidth - 1);
-			float g = static_cast<float>(j) / (kImageHeight - 1);
-			float b = 0.0f;
+			float r{ static_cast<float>(j) / kImageHeight};
+			float g{ static_cast<float>(i) / kImageWidth };
+			float b{ 0.0f };
+			float a{ 1.0f };
 
-			int iR = static_cast<int>(kFloatByte * r);
-			int iG = static_cast<int>(kFloatByte * g);
-			int iB = static_cast<int>(kFloatByte * b);
-
-			std::cout << iR << " " << iG << " " << iB << "\n";
+			Colour256 pixelColour{ r,g,b,a };
+			colour_sys::write(std::cout, pixelColour);
 		}
 	}
 
