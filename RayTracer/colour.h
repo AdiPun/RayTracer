@@ -20,7 +20,15 @@ struct Colour  // 32bit float per channel, no methods
    Each __m256 holds 8 floats  eight pixels processed at once   */
 struct Colour256 {
   __m256 r, g, b, a;
+
+  Colour256(const float* r_vals, const float* g_vals, const float* b_vals,
+            const float* a_vals)
+      : r(_mm256_loadu_ps(r_vals)),
+        g(_mm256_loadu_ps(g_vals)),
+        b(_mm256_loadu_ps(b_vals)),
+        a(_mm256_loadu_ps(a_vals)) {}
 };
+
 
 /*  Colour systems  */
 namespace colour_sys {
