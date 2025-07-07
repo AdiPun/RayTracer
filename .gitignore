@@ -32,6 +32,28 @@ bld/
 [Oo]ut/
 [Ll]og/
 [Ll]ogs/
+[Rr]ay[Tt]racer/[Ss]rc/
+
+# Final PPM output
+*.ppm
+
+# CMake build folders
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Ninja build artifacts (if you ever switch from MSVC to Ninja)
+build.ninja
+.ninja_deps
+.ninja_log
+
+# VS Code settings (if used)
+.vscode/
+
+# RayTracer output binary
+*.exe
+
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
