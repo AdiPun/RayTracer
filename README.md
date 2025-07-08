@@ -28,12 +28,16 @@ The intention is not only to build a fast ray tracer, but also to explore founda
 ## Build Instructions
 You'll need to install [cmake](https://cmake.org/download/)
 ```bat
-# Build the project
+# Run cmake to Build the project
 ./Tools/PungineTools/Build_Project.cmd
-
+```
+Then compile the project in release in Visual Studio
+```bat
 # Then run the raytracer
 ./Tools/PungineTools/Generate_Image.cmd
+```
 or
+```bat
 ./x64/Release/RayTracer.exe > image.ppm
 ```
 ## Development Goals
@@ -47,7 +51,10 @@ or
 
 ## References
 [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html#overview)
+
 [Intel Intrinsics Guide](https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html)
+
 [Data-Oriented Design Book](https://www.dataorienteddesign.com/dodmain/)
+
 [cppreference (C++17)](https://en.cppreference.com/w/cpp/17.html)
 
