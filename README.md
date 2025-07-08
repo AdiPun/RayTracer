@@ -26,6 +26,7 @@ The intention is not only to build a fast ray tracer, but also to explore founda
 ---
 
 ## Build Instructions
+You'll need to install [cmake](https://cmake.org/download/)
 ```bat
 # Build the project
 ./Tools/PungineTools/Build_Project.cmd
